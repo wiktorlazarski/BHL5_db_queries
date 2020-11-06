@@ -39,6 +39,7 @@ CREATE TABLE advertisement (
 	CONSTRAINT fk_price_category
 		FOREIGN KEY(price_category)
 			REFERENCES price_category(category_id)
+			ON DELETE SET NULL
 );
 
 CREATE TABLE messages (
