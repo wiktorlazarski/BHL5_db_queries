@@ -45,17 +45,17 @@ CREATE TABLE advertisement (
 
 CREATE TABLE messages (
 	message_id SERIAL PRIMARY KEY,
-	first_person INT,
-	second_person INT,
+	sender INT,
+	receiver INT,
 	message_content TEXT,
 	advertisement_id INT,
 	message_timestamp TIMESTAMP NOT NULL,
 	CONSTRAINT fk_first
-		FOREIGN KEY(first_person)
+		FOREIGN KEY(sender)
 			REFERENCES user_profile(user_id)
 			ON DELETE CASCADE,
 	CONSTRAINT fk_second
-		FOREIGN KEY(second_person)
+		FOREIGN KEY(receiver)
 			REFERENCES user_profile(user_id)
 			ON DELETE CASCADE
 );
