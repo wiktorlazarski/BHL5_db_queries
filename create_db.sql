@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user_profile CASCADE;
 DROP TABLE IF EXISTS advertisement CASCADE;
+DROP TABLE IF EXISTS image_url;
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS price_category CASCADE;
 DROP TABLE IF EXISTS item_category CASCADE;
@@ -25,7 +26,6 @@ CREATE TABLE item_category (
 
 CREATE TABLE advertisement (
 	advertisement_id SERIAL PRIMARY KEY,
-	image_url TEXT NOT NULL,
 	title TEXT,
 	description TEXT,
 	latitude REAL NOT NULL,
@@ -41,6 +41,16 @@ CREATE TABLE advertisement (
 		FOREIGN KEY(price_category)
 			REFERENCES price_category(category_id)
 			ON DELETE SET NULL
+);
+
+CREATE TABLE image_url (
+	image_id SERIAL PRIMARY KEY,
+	image_url TEXT,
+	advertisement_id INT,
+	CONSTRAINT fk_adverisement
+		FOREIGN KEY(advertisement_id)
+			REFERENCES advertisement(advertisement_id)
+			ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
