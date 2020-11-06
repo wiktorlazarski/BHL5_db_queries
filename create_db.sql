@@ -26,6 +26,7 @@ CREATE TABLE item_category (
 CREATE TABLE advertisement (
 	advertisement_id SERIAL PRIMARY KEY,
 	image_url TEXT NOT NULL,
+	title TEXT,
 	description TEXT,
 	latitude REAL NOT NULL,
 	longitude REAL NOT NULL,
